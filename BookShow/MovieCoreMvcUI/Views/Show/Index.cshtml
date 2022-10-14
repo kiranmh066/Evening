@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BookShowEntity.ShowTiming>
+
+<div>
+    <hr />
+    <a asp-controller="Show" asp-action="ShowEntry">Show Entry</a>
+    <hr />
+</div>
+<div class="row">
+    <div class="col-12">
+        <h3>Show timings</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Show Id</th>
+                    <th>Movie Id</th>
+                    <th>Theatre Id</th>
+                    <th>Show time</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.MovieId</td>
+                        <td>@item.TheatreId</td>
+                        <td>@item.ShowTime</td>
+
+                        <td><a asp-controller="Show" asp-action="EditShow" asp-route-showId="@item.Id">Edit</a></td>
+                        @*asp-route-movieID must be similar to paased movie Id in Edit Action*@
+                        <td><a asp-controller="Show" asp-action="DeleteShow" asp-route-showId="@item.Id">Delete</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

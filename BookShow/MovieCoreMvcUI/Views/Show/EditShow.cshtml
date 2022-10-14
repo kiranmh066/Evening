@@ -1,0 +1,43 @@
+﻿@model BookShowEntity.ShowTiming;
+@{
+    ViewData["Title"] = "EditShow";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <h2>Edit Show Timing Entry</h2><hr />
+    <div class="group-form">
+        <label>Show Id</label>
+        <input type="text" asp-for="Id" class="form-control" placeholder="enter show id" required />
+    </div>
+    <div class="group-form">
+        <label>Movie Id</label>
+        <input type="text" asp-for="MovieId" class="form-control" placeholder="enter movie id" required />
+    </div>
+
+    <div class="group-form">
+        <label>Theatre Id</label>
+        <input type="text" asp-for="TheatreId" class="form-control" placeholder="enter theatre id" required />
+    </div>
+
+    <div class="group-form">
+        <label>Show timing</label>
+        <input type="datetime-local" asp-for="ShowTime" class="form-control" placeholder="enter show time" required />
+    </div>
+
+    <input type="submit" value="save" class="btn btn-outline-success" />
+    <input type="button" value="reset" class="btn btn-outline-secondary" />
+    <hr />
+
+    @if (ViewBag.status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message
+        </div>
+    }
+    else if (ViewBag.status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message
+        </div>
+    }
+</form>

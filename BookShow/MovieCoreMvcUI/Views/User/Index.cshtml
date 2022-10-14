@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BookShowEntity.User>
+
+<div>
+    <hr />
+    <a asp-controller="User" asp-action="UserEntry">User Entry</a>
+    <hr />
+</div>
+<div class="row">
+    <div class="col-12">
+        <h3>Users</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>User Password</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.Password</td>
+
+                        <td><a asp-controller="User" asp-action="EditUser" asp-route-userID="@item.Id">Edit</a></td>
+
+                        <td><a asp-controller="User" asp-action="DeleteUser" asp-route-userID="@item.Id">Delete</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

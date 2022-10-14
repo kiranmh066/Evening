@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BookShowEntity.Movie>
+
+
+<div>
+    <hr />
+    <a asp-controller="Movie" asp-action="MovieEntry">Movie Entry</a>
+    <hr />
+</div>
+<div class="row">
+    <div class="col-12">
+        <h3>Movies</h3>
+        <hr/>
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Movie Id</th>
+                    <th>Movie Name</th>
+                    <th>Movie Desc</th>
+                    <th>Movie Type</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model)
+                {
+                    <tr>
+                        <td>@movie.Id</td>
+                        <td>@movie.Name</td>
+                        <td>@movie.MovieDesc</td>
+                        <td>@movie.MovieType</td>
+                    
+                        <td><a asp-controller="Movie" asp-action="EditMovie" asp-route-movieID="@movie.Id">Edit</a></td>
+                        @*asp-route-movieID must be similar to paased movie Id in Edit Action*@
+                        <td><a asp-controller="Movie" asp-action="DeleteMovie" asp-route-movieID="@movie.Id">Delete</a></td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+</div>

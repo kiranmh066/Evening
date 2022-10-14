@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BookShowEntity.Theatre>
+
+<div>
+    <a asp-controller="Theatre" asp-action="TheatreEntry">Theatre Entry</a>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h3>Theatres</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Theatre Id</th>
+                    <th>Theatre Name</th>
+                    <th>Theatre Location</th>
+                    <th>Comments</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Location</td>
+                        <td>@item.Comments</td>
+
+                        <td><a asp-controller="Theatre" asp-action="EditTheatre" asp-route-theatreID="@item.Id">Edit</a></td>
+
+                        <td><a asp-controller="Theatre" asp-action="DeleteTheatre" asp-route-theatreID="@item.Id">Delete</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

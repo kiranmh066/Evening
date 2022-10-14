@@ -1,0 +1,44 @@
+﻿@model BookShowEntity.Movie;
+@{
+    ViewData["Title"] = "EditMovie";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <h2>Edit Movie Entry</h2><hr />
+    <div class="group-form">
+        <label>Movie Id</label>
+        <input type="text" asp-for="Id" class="form-control" placeholder="enter movie id" required />
+    </div>
+    <div class="group-form">
+        <label>Movie Name</label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="enter movie name" required />
+    </div>
+
+    <div class="group-form">
+        <label>Movie Description</label>
+        <input type="text" asp-for="MovieDesc" class="form-control" placeholder="enter description" required />
+    </div>
+
+    <div class="group-form">
+        <label>Movie Type</label>
+        <input type="text" asp-for="MovieType" class="form-control" placeholder="enter type of the movie" required />
+    </div>
+
+    <input type="submit" value="save" class="btn btn-outline-success" />
+    <input type="button" value="reset" class="btn btn-outline-secondary" />
+    <hr />
+
+    @if (ViewBag.status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message
+        </div>
+    }
+    else if (ViewBag.status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message
+        </div>
+    }
+</form>
+
